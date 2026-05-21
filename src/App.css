@@ -1,0 +1,245 @@
+/* Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #f0f0f0;
+  color: #1a1a1a;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* A4 Page container */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  max-height: 297mm;
+  margin: 20px auto;
+  background: white;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  page-break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+}
+
+.page:last-child {
+  page-break-after: auto;
+}
+
+/* Header */
+.header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  flex-shrink: 0;
+  width: 210mm;
+  margin: 0 auto;
+}
+
+.header-left {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.header-right {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* Footer */
+.footer {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-top: 1px solid #E5E5E5;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #999;
+  width: 210mm;
+  margin: 0 auto;
+}
+
+/* Content area */
+.page-content {
+  flex: 1;
+  padding: 32px 40px 24px;
+  overflow: hidden;
+}
+
+/* Cover and back cover special styling */
+.page-cover,
+.page-back-cover {
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Section title */
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* Label */
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Sub-label */
+.sub-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+/* Bordered box with left accent */
+.accent-box {
+  border-left: 4px solid;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Shaded box */
+.shaded-box {
+  background: #FAF5F8;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+/* Amber accent box */
+.amber-box {
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* Card */
+.card {
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.card-body {
+  padding: 16px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Pill badge */
+.pill {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 100px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Note text */
+.note {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+/* Red bordered box */
+.red-box {
+  border: 1px solid #E04A4A;
+  background: #FDF5F5;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Dotted box */
+.dotted-box {
+  border: 2px dashed #CCC;
+  border-radius: 8px;
+  padding: 20px;
+  background: #FAFAFA;
+  min-height: 80px;
+}
+
+/* Rule row */
+.rule-row {
+  display: flex;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.rule-number {
+  font-size: 36px;
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 48px;
+  line-height: 1;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+  }
+
+  .page {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    box-shadow: none;
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  .footer {
+    width: 100%;
+  }
+}
+
+/* Screen only */
+@media screen {
+  .page {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+}
