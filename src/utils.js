@@ -5,8 +5,7 @@
  */
 export function getParam(key) {
   const params = new URLSearchParams(window.location.search);
-  const value = params.get(key);
-  return value ? decodeURIComponent(value) : '';
+  return params.get(key) || '';
 }
 
 /**
@@ -24,25 +23,13 @@ export function convertGoogleDriveUrl(url) {
 }
 
 /**
- * Load Google Fonts using WebFontLoader.
- * @param {string} fontHeading
- * @param {string} fontBody
- * @returns {Promise<void>}
+ * Inject a Google Font <link> tag into <head>.
+ * @param {string} fontName
  */
-export function loadFonts(fontHeading, fontBody) {
-  const heading = fontHeading && fontHeading !== 'Inter' ? fontHeading : 'Inter';
-  const body = fontBody && fontBody !== 'Inter' ? fontBody : 'Inter';
-
-  return new Promise((resolve) => {
-    import('webfontloader').then((WebFontModule) => {
-      const WebFont = WebFontModule.default || WebFontModule;
-      WebFont.load({
-        google: {
-          families: [heading, body],
-        },
-        active: () => resolve(),
-        inactive: () => resolve(),
-      });
-    }).catch(() => resolve());
-  });
+export function loadFont(fontName) {
+  if (!fontName || fontName === 'DM Sans') return;
+  const link = document.createElement('link');
+  link.href = `https://fonts.googleapis.com/css2?family=${fontName.replace(/\s+/g, '+')}:wght@400;700&display=swap`;
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
 }
